@@ -4,7 +4,7 @@ Pointers only. History lives in Issues and PRs; replace lines, do not append a c
 
 - **Milestone:** Setup (no roadmap published yet).
 - **Active Issue:** https://github.com/luisfpires18/woo-3d/issues/1 — WOO-SETUP-001, workflow setup.
-- **Active PR:** see Issue #1 comments (draft PR from `woo-setup-001-ai-workflow`).
+- **Active PR:** https://github.com/luisfpires18/woo-3d/pull/21 (draft, branch `woo-setup-001-ai-workflow`).
 - **Review status:** awaiting independent ChatGPT review.
 - **Next proposed task:** owner-approved roadmap publication (separate step; not started, not authorized).
 
