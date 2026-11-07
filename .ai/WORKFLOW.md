@@ -108,7 +108,7 @@ After the owner accepts the result and directs the merge: merge as directed, con
 |---|---|
 | Roadmap | Roadmap Issue [#2](https://github.com/luisfpires18/woo-3d/issues/2) |
 | Milestone trackers (M0–M6) | Tracker Issues #3–#9 (e.g. M0: [#3](https://github.com/luisfpires18/woo-3d/issues/3)) |
-| Phase plans | Phase Issues #10–#33 |
+| Phase plans | Phase Issues #10–#20 and #22–#33 (#21 is the setup PR) |
 | Task plans | Task Issues (e.g. M0 tasks #34–#41) |
 | Reports, evidence index, review verdicts | PRs (or the Issue when no PR exists) |
 | Current pointers and blockers | [STATE.md](STATE.md) |
