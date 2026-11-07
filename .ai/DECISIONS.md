@@ -15,14 +15,21 @@ Three lists. Do not move an item to **Confirmed** without an owner decision and 
 | C-7 | Performance objective: 1080p / 60 FPS packaged Windows build, subject to benchmarking. | Issue #1 |
 | C-8 | LorEvolve is optional and never blocks work. | Issue #1 |
 | C-9 | GitHub records (Issues, PRs, these files) are authoritative; assistant memory is not. | woo-rts DECISIONS (5 Nov 2026), restated in Issue #1 |
+| C-10 | Machines: **LP-VICTUS** (Radeon RX 5500M 4 GB) is the initial development machine, including M0 and early prototype work. **UFO-LP** (RTX 2070 8 GB) is the later development and 1080p/60 FPS packaged-build benchmark machine. Results are attributed to the machine actually used; Unreal, automation and media tooling are revalidated on UFO-LP before relying on them there. | [Owner update on PR #21](https://github.com/luisfpires18/woo-3d/pull/21#issuecomment-6714273439) |
+| C-11 | Roadmap and plan structure: Roadmap Issue #2, milestone tracker Issues #3–#9, phase Issues #10–#33, M0 task Issues #34–#41. Issue-based Markdown trackers; no native GitHub Milestones or sub-issues. | [Roadmap #2](https://github.com/luisfpires18/woo-3d/issues/2); [review on PR #21](https://github.com/luisfpires18/woo-3d/pull/21#issuecomment-6714203616) |
+
+## Completed setup actions
+
+| ID | Action | Record |
+|---|---|---|
+| H-1 | Initial `master` bootstrap: commit `0a050c7` with `.gitignore` and `.gitattributes` only, pushed 7 Nov 2026 under the owner's start instruction for Issue #1. | [Issue #1 report](https://github.com/luisfpires18/woo-3d/issues/1#issuecomment-6714130674) |
+| H-2 | Roadmap publication: Roadmap #2 and its tracker, phase and M0 task Issues published by the owner-approved roadmap step. | [Roadmap #2](https://github.com/luisfpires18/woo-3d/issues/2) |
 
 ## Proposed — owner decision needed
 
 | ID | Question | Options / notes |
 |---|---|---|
 | P-1 | Repository visibility. Repo is **public**; earlier planning preferred private unless Actions usage justified public. | Keep public (third-party assets must allow redistribution) or make private (release-asset evidence stays private). Claude does not change visibility. |
-| P-2 | Primary machine. Issue #1 names UFO-LP (RTX 2070 8 GB); setup ran on LP-VICTUS (RX 5500M 4 GB). | Confirm which machine runs builds/benchmarks; record the other as secondary. Performance results must name hardware. |
-| P-3 | Initial `master` bootstrap. Remote was empty; a PR needs a base commit. | Recorded in Issue #1 comment; owner directed setup start on 7 Nov 2026. |
 | P-4 | Evidence storage route: draft GitHub release assets (as woo-rts). | Untested in this repo; see [STORAGE.md](STORAGE.md). |
 | P-5 | Feature branch naming `woo-<id>-<slug>`. | Convention only; change freely. |
 
@@ -33,4 +40,3 @@ Three lists. Do not move an item to **Confirmed** without an owner decision and 
 | D-1 | Custom models (characters, buildings). | After prototype with free assets. |
 | D-2 | Full RPG systems (inventory, quests, progression, saving). | Roadmap planning. |
 | D-3 | GitHub Actions / CI. | When local-only builds become a bottleneck. |
-| D-4 | Roadmap Issue and milestones. | Separate owner-approved publication step. |

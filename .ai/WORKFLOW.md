@@ -100,19 +100,22 @@ When the owner says "Claude finished" (or similar), the reviewer retrieves the a
 
 ## 8. Close-out
 
-After the owner accepts the result and directs the merge: merge as directed, confirm it, close the Issue, update STATE.md pointers, and list evidence cleanup candidates per [STORAGE.md](STORAGE.md) without deleting anything. A passing review is not the owner's acceptance.
+After the owner accepts the result and directs the merge: merge as directed, confirm it, close the Issue, tick it in its tracker Issue, update STATE.md pointers, and list evidence cleanup candidates per [STORAGE.md](STORAGE.md) without deleting anything. A passing review is not the owner's acceptance.
 
 ## Record locations
 
 | Record | Location |
 |---|---|
-| Roadmap | One pinned Roadmap Issue (to be published by a separate owner-approved step) |
-| Milestones | GitHub Milestones |
-| Task plans | Issues |
+| Roadmap | Roadmap Issue [#2](https://github.com/luisfpires18/woo-3d/issues/2) |
+| Milestone trackers (M0–M6) | Tracker Issues #3–#9 (e.g. M0: [#3](https://github.com/luisfpires18/woo-3d/issues/3)) |
+| Phase plans | Phase Issues #10–#33 |
+| Task plans | Task Issues (e.g. M0 tasks #34–#41) |
 | Reports, evidence index, review verdicts | PRs (or the Issue when no PR exists) |
 | Current pointers and blockers | [STATE.md](STATE.md) |
 | Lasting decisions | [DECISIONS.md](DECISIONS.md) |
 | Media capability record | [MEDIA.md](MEDIA.md) |
 | Evidence storage and retention | [STORAGE.md](STORAGE.md) |
+
+Milestones, phases and tasks are ordinary Issues with Markdown checklists linking each other. They are **not** native GitHub Milestones or native sub-issues; do not assume those features are in use. At close-out, tick the completed task in its tracker Issue.
 
 Local assistant memory is a convenience, never the authoritative record.

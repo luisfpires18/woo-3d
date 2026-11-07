@@ -11,8 +11,8 @@
 | Item | Value | Status |
 |---|---|---|
 | Engine | Unreal Engine 5.8.4 (`Build.version` 5.8.4, CL 58902052, `++UE5+Release-5.8`) | Verified installed on LP-VICTUS at `D:/Apps/Epic Games/UE_5.8`, 7 Nov 2026 |
-| Primary machine (per Issue #1) | UFO-LP — Windows, RTX 2070 8 GB | Not verified; setup work ran on a different machine |
-| Machine used for setup | LP-VICTUS — Windows 11 Pro, AMD Radeon RX 5500M 4 GB + integrated Radeon | Observed 7 Nov 2026 |
+| Current / initial development machine | LP-VICTUS — Windows 11 Pro, AMD Radeon RX 5500M 4 GB + integrated Radeon | Confirmed ([DECISIONS.md](DECISIONS.md) C-10); observed 7 Nov 2026 |
+| Later development and performance-benchmark machine | UFO-LP — Windows, RTX 2070 8 GB | Confirmed role; engine and toolchain **not verified** there |
 | Python | Engine-bundled `Engine/Binaries/ThirdParty/Python3/Win64/python.exe`; `PythonScriptPlugin` present under `Plugins/Experimental` | Files present; editor scripting **not run** |
 | Automation tool | `Engine/Build/BatchFiles/RunUAT.bat` | Present; **not run** |
 
@@ -20,7 +20,7 @@ Engine paths are machine-specific. Re-check them on each machine (`HKCU\SOFTWARE
 
 ## Performance objective
 
-Reference target: **1080p, 60 FPS in a packaged Windows build** on the primary machine (RTX 2070 8 GB). This is an objective subject to benchmarking, not a verified result. Measurements on other hardware must name that hardware.
+Reference target: **1080p, 60 FPS in a packaged Windows build** on UFO-LP (RTX 2070 8 GB). This is an objective subject to benchmarking, not a verified result. LP-VICTUS measurements are reported as LP-VICTUS results and never as evidence for the UFO-LP target.
 
 ## Prototype scope (from Issue #1)
 
