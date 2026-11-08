@@ -34,7 +34,7 @@ def sample(m, t, y, normal=False, tiling=None):
     return n
 
 
-def mat(name, base, normal=None, orm=None, masked=False, tiling=None, skinned=False, head_only=False):
+def mat(name, base, normal=None, orm=None, masked=False, tiling=None, skinned=False):
     path = f"{ROOT}/Materials/{name}"
     if EAL.does_asset_exist(path):
         EAL.delete_asset(path)
@@ -52,29 +52,6 @@ def mat(name, base, normal=None, orm=None, masked=False, tiling=None, skinned=Fa
         o = sample(m, tex(orm), 300)
         MEL.connect_material_property(o, "G", BLEND.MP_ROUGHNESS)
         MEL.connect_material_property(o, "B", BLEND.MP_METALLIC)
-    if head_only:  # workaround: the free tier has no head-only mesh, so mask the body below the neck
-        m.set_editor_property("blend_mode", U.BlendMode.BLEND_MASKED)
-        pos = MEL.create_material_expression(m, U.MaterialExpressionPreSkinnedPosition, -900, 500)
-        z = MEL.create_material_expression(m, U.MaterialExpressionComponentMask, -700, 500)
-        z.set_editor_property("r", False)
-        z.set_editor_property("g", False)
-        z.set_editor_property("b", True)
-        z.set_editor_property("a", False)
-        MEL.connect_material_expressions(pos, "", z, "")
-        cut = MEL.create_material_expression(m, U.MaterialExpressionIf, -400, 500)
-        limit = MEL.create_material_expression(m, U.MaterialExpressionConstant, -700, 700)
-        limit.set_editor_property("r", 150.0)
-        one = MEL.create_material_expression(m, U.MaterialExpressionConstant, -700, 800)
-        one.set_editor_property("r", 1.0)
-        zero = MEL.create_material_expression(m, U.MaterialExpressionConstant, -700, 900)
-        vs = MEL.create_material_expression(m, U.MaterialExpressionVertexInterpolator, -550, 500)
-        MEL.connect_material_expressions(z, "", vs, "")
-        MEL.connect_material_expressions(vs, "", cut, "A")
-        MEL.connect_material_expressions(limit, "", cut, "B")
-        MEL.connect_material_expressions(one, "", cut, "AGreaterThanB")
-        MEL.connect_material_expressions(one, "", cut, "AEqualsB")
-        MEL.connect_material_expressions(zero, "", cut, "ALessThanB")
-        MEL.connect_material_property(cut, "", BLEND.MP_OPACITY_MASK)
     MEL.recompile_material(m)
     EAL.save_asset(path)
     return m
@@ -89,7 +66,6 @@ GROUND = mat("M_Ground", "Ground/Textures/brown_mud_leaves_01_diff_1k", "Ground/
 W = "Warrior/Textures"
 RANGER = mat("M_Ranger", f"{W}/T_Ranger_BaseColor", f"{W}/T_Ranger_Normal", f"{W}/T_Ranger_ORM", skinned=True)
 SKIN_R = mat("M_RangerSkin", f"{W}/T_Regular_Male_Dark_BaseColor", f"{W}/T_Regular_Male_Normal", skinned=True)
-SKIN_B = mat("M_BodySkin", f"{W}/T_Superhero_Male_Dark", f"{W}/T_Superhero_Male_Normal", skinned=True, head_only=True)
 
 if EAL.does_asset_exist(MAP):
     EAL.delete_asset(MAP)
@@ -135,13 +111,12 @@ static(f"{N}/Fern_1", (120, -440, 0), 0.25, [FERN])
 static(f"{N}/Grass_Common_Tall", (60, 300, 0), 0.6, [GRASS])
 static(f"{N}/Rock_Medium_1", (380, 520, 0), 0.5, [ROCK])
 
-RSKM, BSKM = f"{ROOT}/Warrior/Male_Ranger", f"{ROOT}/Warrior/Superhero_Male_FullBody"
+RSKM = f"{ROOT}/Warrior/Male_Ranger"
 GRIP = [float(v) for v in os.environ.get("WOO006_GRIP", "0,0,0").split(",")]  # roll, pitch, yaw on hand_r
 YAW = 90  # humanoid faces +Y as imported; turn it to the camera
 for y, clip, name in [(-170, "Sword_Idle", "Idle"), (120, "Sword_Heavy_Combo", "Heavy")]:
     anim = f"{A}UAL{1 if clip == 'Sword_Idle' else 2}_Standard_Armature_{clip}"
     r = skel(RSKM, anim, (0, y, 0), YAW, 1.0, [(0, RANGER), (1, SKIN_R)], f"Warrior_{name}")
-    skel(BSKM, anim, (0, y, 0), YAW, 1.0, [(2, SKIN_B)], f"WarriorBody_{name}")
     s = static(f"{ROOT}/Weapons/Claymore", (0, y, 100), 0.24, label=f"Claymore_{name}")
     s.root_component.set_mobility(U.ComponentMobility.MOVABLE)
     s.attach_to_actor(r, "hand_r", U.AttachmentRule.SNAP_TO_TARGET, U.AttachmentRule.SNAP_TO_TARGET, U.AttachmentRule.KEEP_WORLD)

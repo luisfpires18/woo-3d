@@ -66,15 +66,12 @@ for png in ["T_Ranger_BaseColor", "T_Ranger_Normal", "T_Ranger_ORM"]:
     task(f"outfit/{png}.png", "Warrior/Textures")
 for png in ["T_Regular_Male_Dark_BaseColor", "T_Regular_Male_Normal"]:
     task(f"outfit/{png}.png", "Warrior/Textures")
-for png in ["T_Superhero_Male_Dark", "T_Superhero_Male_Normal"]:
-    task(f"base/{png}.png", "Warrior/Textures")
 for jpg in ["brown_mud_leaves_01_diff_1k", "brown_mud_leaves_01_nor_gl_1k"]:
     task(f"polyhaven/{jpg}.jpg", "Ground/Textures")
 
 HUMAN = 100.0  # humanoid packs export in metres
 task("outfit/Male_Ranger.fbx", "Warrior", ui(SK, scale=HUMAN))
 skel = U.load_asset(f"{ROOT}/Warrior/Male_Ranger_Skeleton")
-task("base/Superhero_Male_FullBody.fbx", "Warrior", ui(SK, skeleton=skel, scale=HUMAN))
 task("animals/Wolf.fbx", "Wolf", ui(SK, anims=True))
 for f in ["ual1/UAL1_Standard.fbx", "ual2/UAL2_Standard.fbx"]:
     task(f, "Warrior/Anim", ui(SK, anims=True, skeleton=skel, mesh=False, scale=HUMAN))
