@@ -13,7 +13,7 @@ Added by WOO-007 (#40). Observed on LP-VICTUS, UE 5.8.4, 8 Nov 2026.
 ## Start and connect
 
 1. Open `MCPSandbox.uproject` in UE 5.8. The port listens about 25 s after launch.
-2. Start a **new** Claude Code session in this repository. MCP servers are read at session start; a session already running does not gain the tool.
+2. Start a new Claude Code session in this repository. For a session already running, the owner presses Reconnect on `unreal-engine` in the app or runs `/mcp` (verified #41); the assistant cannot do it.
 3. Confirm the connection. `Connected` is expected:
 
 ```bash
@@ -36,9 +36,9 @@ claude mcp add --transport http -s local unreal-engine http://127.0.0.1:3000/mcp
 
 | Symptom | Fix |
 |---|---|
-| `ECONNREFUSED` | The editor is closed or still loading. Open it and retry. |
+| `ECONNREFUSED` | The editor is closed, still loading, or showing only the Project Browser. Open `MCPSandbox.uproject` and retry. |
 | 401 | The token is stale. Register again. |
-| Tool missing but `claude mcp get` is `Connected` | The session started before registration or while the editor was closed. Start a new session. |
+| Tool missing but `claude mcp get` is `Connected` | The session started before registration or while the editor was closed. Reconnect it in the app, or start a new session. |
 
 ## Call pattern
 
@@ -66,7 +66,7 @@ Run a separate process against the saved map. `-DisablePlugins=EngineWire` keeps
 
 | Limit | Safe fallback |
 |---|---|
-| A running Claude Code session cannot gain the tool. | Start a new session. Publish a blocker if that is not possible. Python or CLI does not count as MCP success. |
+| A running Claude Code session cannot reconnect the tool by itself. | The owner reconnects it, or a new session starts. Publish a blocker if neither is possible. Python or CLI does not count as MCP success. |
 | The MCP needs an open editor with the plugin loaded. `NOT_CONNECTED` or a refused connection means no editor operation ran. | Open `MCPSandbox.uproject`. For read-only checks of saved content, use the commandlet above. |
 | `headersHelper` needs the workspace trust dialog accepted interactively. | The header stored in `~/.claude.json`, outside the repository. |
 | `execute_python` and destructive capabilities need a single-use consent nonce from describe. | Run describe again for each call. A nonce cannot be reused. |

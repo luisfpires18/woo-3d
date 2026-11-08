@@ -15,7 +15,7 @@ The routes marked Verified below are the ones tested. woo-rts capture results (U
 | Upload to draft GitHub release + `gh release download` + hash match | **Verified** by Claude Code authenticated as the owner, 8 Nov 2026 (#41, `evidence-issue41-capture-smoke-20261108`). See [STORAGE.md](STORAGE.md). |
 | Implementer download and pixel inspection | **Verified** by Claude Code, 8 Nov 2026 (#41): PNGs and sampled video frames read from the downloaded files. |
 | ChatGPT reviewer retrieval and pixel inspection | Unverified. Only the reviewer can test it. A draft needs an authenticated client with repository write access. |
-| EngineWire viewport capture in a session started before the editor | **Not available.** A session started while the editor was closed cannot gain the tool (#41). Open the editor first, then start the session. |
+| EngineWire viewport capture in a session started before the editor | **Verified** 8 Nov 2026 (#41) after the owner pressed Reconnect on `unreal-engine` in the app with the editor open. The assistant cannot reconnect it. The Unreal Project Browser alone does not start the server; MCPSandbox must be open. |
 
 When a task first needs a route, verify it within that task, record the result here (date, machine, engine, commit, command, outcome), and only then rely on it.
 
