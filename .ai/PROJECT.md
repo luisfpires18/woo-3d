@@ -53,6 +53,7 @@ Reference target: **1080p, 60 FPS in a packaged Windows build** on UFO-LP (RTX 2
 | [DECISIONS.md](DECISIONS.md) | Confirmed / proposed / deferred decisions |
 | [MEDIA.md](MEDIA.md) | Unreal screenshot/video evidence contract |
 | [STORAGE.md](STORAGE.md) | Evidence storage, manifest, retention |
+| [`../docs/BUILD_RUNBOOK.md`](../docs/BUILD_RUNBOOK.md) | Editor build / launch-check scripts and fresh-checkout troubleshooting |
 
 A game design document is not in this repository yet; do not reconstruct one from chat history.
 
