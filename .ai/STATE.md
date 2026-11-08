@@ -4,8 +4,8 @@ Pointers only. Detailed history lives in Issues and PRs; replace lines, do not a
 
 - **Roadmap:** https://github.com/luisfpires18/woo-3d/issues/2 (M0–M6; issue-based trackers, not native GitHub Milestones).
 - **Current milestone:** M0 Technical Foundation — in progress; tracker https://github.com/luisfpires18/woo-3d/issues/3.
-- **Active implementation Issue:** #39 WOO-006 https://github.com/luisfpires18/woo-3d/issues/39 — stopped at the free-tier gate before import; see the blocker report on the Issue.
-- **Active implementation PR:** https://github.com/luisfpires18/woo-3d/pull/48 (draft, docs only).
+- **Active implementation Issue:** #39 WOO-006 https://github.com/luisfpires18/woo-3d/issues/39 — sample imported under owner gates; report on the PR, awaiting review.
+- **Active implementation PR:** https://github.com/luisfpires18/woo-3d/pull/48 (draft; first LFS content, 66.3 MB).
 - **Last completed tasks:** WOO-002 https://github.com/luisfpires18/woo-3d/issues/35 (PR https://github.com/luisfpires18/woo-3d/pull/45, squash-merged as `4ae9cbb`), WOO-003 https://github.com/luisfpires18/woo-3d/issues/36 (PR https://github.com/luisfpires18/woo-3d/pull/44), and WOO-004 https://github.com/luisfpires18/woo-3d/issues/37 (closed; audit report https://github.com/luisfpires18/woo-3d/issues/37#issuecomment-6720442373). WOO-007 https://github.com/luisfpires18/woo-3d/issues/40 (PR https://github.com/luisfpires18/woo-3d/pull/46) — review ACCEPTED, owner directed merge 8 Nov 2026. WOO-008 https://github.com/luisfpires18/woo-3d/issues/41 (PR https://github.com/luisfpires18/woo-3d/pull/47, squash-merged as `caee4896`) — review ACCEPTED, owner directed merge 8 Nov 2026.
 - **Research:** #38 WOO-005 owner-accepted and closed 8 Nov 2026. Provisional asset selection approved for the #39 spike under gates, 8 Nov 2026 (https://github.com/luisfpires18/woo-3d/issues/39#issuecomment-6726799348).
 - **Next proposed task:** none; #39 WOO-006 is the last open M0 task.
@@ -13,5 +13,5 @@ Pointers only. Detailed history lives in Issues and PRs; replace lines, do not a
 
 ## Blockers / owner decisions open
 
-- #39: gate failed: the free Quaternius outfit tier has no warrior outfit. Owner decision needed (see the Issue). Repository stays public ([DECISIONS.md](DECISIONS.md) C-13): do not commit source assets lacking public redistribution rights.
+- #39 open items for the owner: Velociraptor clips fail in this importer (second hostile type undecided); the free Warrior has no head mesh; the Ranger outfit is a blockout placeholder. Repository stays public ([DECISIONS.md](DECISIONS.md) C-13): do not commit source assets lacking public redistribution rights.
 - Editor build (clean + incremental) and launch check scripted and verified on LP-VICTUS (#35, `docs/BUILD_RUNBOOK.md`). EngineWire MCP, the editor viewport capture route and one engine automation test are verified in MCPSandbox only (#40, `docs/MCP_RUNBOOK.md`). `-game` screenshot and FFmpeg `ddagrab` video are verified in MCPSandbox only (#41). Other capture routes and packaging are still **unverified** — [MEDIA.md](MEDIA.md).
