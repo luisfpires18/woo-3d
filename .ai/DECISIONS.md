@@ -18,6 +18,7 @@ Three lists. Do not move an item to **Confirmed** without an owner decision and 
 | C-10 | Machines: **LP-VICTUS** (Radeon RX 5500M 4 GB) is the initial development machine, including M0 and early prototype work. **UFO-LP** (RTX 2070 8 GB) is the later development and 1080p/60 FPS packaged-build benchmark machine. Results are attributed to the machine actually used; Unreal, automation and media tooling are revalidated on UFO-LP before relying on them there. | [Owner update on PR #21](https://github.com/luisfpires18/woo-3d/pull/21#issuecomment-6714273439) |
 | C-11 | Roadmap and plan structure: Roadmap Issue #2, milestone tracker Issues #3–#9, phase Issues #10–#20 and #22–#33 (#21 is the setup PR), M0 task Issues #34–#41. Issue-based Markdown trackers; no native GitHub Milestones or sub-issues. | [Roadmap #2](https://github.com/luisfpires18/woo-3d/issues/2); [review on PR #21](https://github.com/luisfpires18/woo-3d/pull/21#issuecomment-6714203616) |
 | C-12 | Evidence storage: draft GitHub release assets per [STORAGE.md](STORAGE.md) (was P-4). Owner approved 8 Nov 2026. Verified in #41: upload, authenticated download with matching hashes, and 404 for anonymous access. ChatGPT reviewer retrieval is not verified. | [Owner decision on #41](https://github.com/luisfpires18/woo-3d/issues/41); [PR #47](https://github.com/luisfpires18/woo-3d/pull/47) |
+| C-13 | Repository stays **public** (was P-1). Commit only third-party assets whose terms permit public redistribution. Owner decided 8 Nov 2026. | [Owner decisions on #39](https://github.com/luisfpires18/woo-3d/issues/39#issuecomment-6726799348) |
 
 ## Completed setup actions
 
@@ -30,7 +31,6 @@ Three lists. Do not move an item to **Confirmed** without an owner decision and 
 
 | ID | Question | Options / notes |
 |---|---|---|
-| P-1 | Repository visibility. Repo is **public**; earlier planning preferred private unless Actions usage justified public. | Keep public (third-party assets must allow redistribution) or make private (release-asset evidence stays private). Claude does not change visibility. |
 | P-5 | Feature branch naming `woo-<id>-<slug>`. | Convention only; change freely. |
 
 ## Deferred

@@ -2,7 +2,7 @@
 
 - **Name:** Weapons of Order (WOO)
 - **Genre:** single-player RPG
-- **Repository:** https://github.com/luisfpires18/woo-3d (public at time of setup — see [DECISIONS.md](DECISIONS.md) P-1)
+- **Repository:** https://github.com/luisfpires18/woo-3d (public — see [DECISIONS.md](DECISIONS.md) C-13)
 - **Integration branch:** `master`. One feature branch per approved Issue. No `main` or `dev`.
 - **CI:** none. No GitHub Actions. Claude builds and tests locally.
 
