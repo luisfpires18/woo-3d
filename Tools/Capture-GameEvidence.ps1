@@ -5,7 +5,8 @@
 .NOTES
   ddagrab is cropped to the DPI-aware client rectangle, so only game pixels enter the file.
   Do not use gdigrab title=: at 125% DPI it pulled neighbouring window text into the frame.
-  Exits non-zero if the game loses foreground, because the window could then be covered.
+  Exits non-zero and deletes the take if the game loses foreground at any point in the
+  recording, because the window could then be covered, or if FFmpeg exits non-zero.
 #>
 param(
     [Parameter(Mandatory)][string]$OutDir,
@@ -63,18 +64,33 @@ try {
         '-y', '-hide_banner', '-f', 'lavfi', '-i', $grab, '-t', $Seconds, '-c:v', 'libx264', '-preset', 'veryfast',
         '-crf', '18', '-pix_fmt', 'yuv420p', "`"$video`"")
     $null = $ff.Handle   # keeps ExitCode readable under PowerShell 5.1
-    Start-Sleep 2
-    $lost = 0
-    [W.U]::keybd_event(0x41, 0, 0, [UIntPtr]::Zero)   # A down
+    $pressed = $false; $lost = $false
+    $clock = [Diagnostics.Stopwatch]::StartNew()
     try {
-        $end = (Get-Date).AddSeconds(3)
-        while ((Get-Date) -lt $end) {
-            if ([W.U]::GetForegroundWindow() -ne $hwnd) { $lost++; break }
+        # Watch focus for the whole recording. Polled every 100 ms, so a shorter loss can pass unseen.
+        while (-not $ff.HasExited) {
+            if ([W.U]::GetForegroundWindow() -ne $hwnd) { $lost = $true; break }
+            $hold = $clock.Elapsed.TotalSeconds -ge 2 -and $clock.Elapsed.TotalSeconds -lt 5
+            if ($hold -ne $pressed) {
+                $flags = if ($hold) { 0 } else { 2 }                      # 0x41 = A; 2 = key up
+                [W.U]::keybd_event(0x41, 0, [uint32]$flags, [UIntPtr]::Zero)
+                $pressed = $hold
+            }
             Start-Sleep -Milliseconds 100
         }
-    } finally { [W.U]::keybd_event(0x41, 0, 2, [UIntPtr]::Zero) }  # A up, always
+    } finally {
+        if ($pressed) { [W.U]::keybd_event(0x41, 0, 2, [UIntPtr]::Zero) }  # A up, always
+    }
+    if ($lost) {
+        if (-not $ff.HasExited) { Stop-Process -Id $ff.Id; $ff.WaitForExit() }
+        Remove-Item -LiteralPath $video -ErrorAction SilentlyContinue
+        throw 'Game lost foreground during recording; take discarded.'
+    }
     $ff.WaitForExit()
-    if ($lost) { throw 'Game lost foreground during recording; discard this take.' }
+    if ($ff.ExitCode -ne 0) {
+        Remove-Item -LiteralPath $video -ErrorAction SilentlyContinue
+        throw "FFmpeg exited with code $($ff.ExitCode); take discarded. See ffmpeg.log."
+    }
     Get-ChildItem $shots -Recurse -Filter *.png | Where-Object LastWriteTime -gt $started |
         Copy-Item -Destination $OutDir
     "title=$title"
