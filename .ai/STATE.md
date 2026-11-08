@@ -13,5 +13,5 @@ Pointers only. Detailed history lives in Issues and PRs; replace lines, do not a
 
 ## Blockers / owner decisions open
 
-- #39 open items for the owner: Velociraptor clips fail in this importer (second hostile type undecided); the free Warrior has no head mesh; the Ranger outfit is a blockout placeholder. Repository stays public ([DECISIONS.md](DECISIONS.md) C-13): do not commit source assets lacking public redistribution rights.
+- #39 open items for the owner: hostile types are Wolf and Husky by owner decision (Velociraptor clips failed in this importer); the free Warrior has no head mesh; the Ranger outfit is a blockout placeholder. Repository stays public ([DECISIONS.md](DECISIONS.md) C-13): do not commit source assets lacking public redistribution rights.
 - Editor build (clean + incremental) and launch check scripted and verified on LP-VICTUS (#35, `docs/BUILD_RUNBOOK.md`). EngineWire MCP, the editor viewport capture route and one engine automation test are verified in MCPSandbox only (#40, `docs/MCP_RUNBOOK.md`). `-game` screenshot and FFmpeg `ddagrab` video are verified in MCPSandbox only (#41). Other capture routes and packaging are still **unverified** — [MEDIA.md](MEDIA.md).
