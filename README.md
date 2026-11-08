@@ -11,7 +11,7 @@ The first prototype is a 500 Ã— 500 m Sylvara jungle with Venari Village, dirt t
 - Windows 10/11
 - Unreal Engine 5.8.4 (Epic Games Launcher)
 - Visual Studio 2026 (18.0+) or 2022 (17.8+). Open the committed [`.vsconfig`](.vsconfig) in the Visual Studio Installer (*More > Import configuration*) to add the required workloads and components.
-- MSVC: UE 5.8.4 prefers 14.50.35717–14.50.x (VS 2026) or 14.44.35207–14.44.x (VS 2022), minimum 14.38.33130; 14.50.0–14.50.35722 and 14.39–14.43 are banned. Windows SDK 10.0.22621.0. Source: `Engine/Config/Windows/Windows_SDK.json`.
+- MSVC: UE 5.8.4 prefers 14.50.35717-14.50.x (VS 2026) or 14.44.35207-14.44.x (VS 2022), minimum 14.38.33130; 14.50.0-14.50.35722 and 14.39-14.43 are banned. Windows SDK 10.0.22621.0. Source: `Engine/Config/Windows/Windows_SDK.json`.
 - Git and [Git LFS](https://git-lfs.com/)
 
 ## Getting started
