@@ -4,14 +4,15 @@ Pointers only. Detailed history lives in Issues and PRs; replace lines, do not a
 
 - **Roadmap:** https://github.com/luisfpires18/woo-3d/issues/2 (M0–M6; issue-based trackers, not native GitHub Milestones).
 - **Current milestone:** M0 Technical Foundation — in progress; tracker https://github.com/luisfpires18/woo-3d/issues/3.
-- **Active implementation Issue:** none from Claude implementation. #38 (WOO-005, research) started by owner 7 Nov 2026 — check its Issue/PR for status.
+- **Active implementation Issue:** none. #38 (WOO-005, plan-only research) is complete: report Revision 3 at https://github.com/luisfpires18/woo-3d/issues/38#issuecomment-6714923083, review ACCEPTED, closed as owner-accepted 8 Nov 2026. Asset selection and P-1 remain owner decisions.
 - **Active implementation PR:** none.
 - **Last completed task:** WOO-001 https://github.com/luisfpires18/woo-3d/issues/34 — review ACCEPTED, owner directed merge; PR https://github.com/luisfpires18/woo-3d/pull/42 squash-merged to `master` as `58f84b97a7d4e9aa1112d91aa30e4d087a8592d0`.
-- **Next proposed task:** eligible, not started (each needs an explicit owner start): #35 WOO-002 and #36 WOO-003. #40 WOO-007 needs WOO-002 too; #37 needs #36; #39 needs #38 selection approval and P-1; #41 needs #40.
+- **Next proposed task:** eligible, not started (each needs an explicit owner start): #35 WOO-002 and #36 WOO-003. #40 WOO-007 needs WOO-002 too; #37 needs #36; #39 needs its dependencies and an explicit owner start (not started); #41 needs #40.
 - **Development machine:** LP-VICTUS initially. UFO-LP is the later performance-benchmark machine; Unreal, automation and media tooling must be revalidated there when development moves.
 
 ## Blockers / owner decisions open
 
-- Repository visibility: public vs private — [DECISIONS.md](DECISIONS.md) P-1. Do not commit source assets lacking public redistribution rights.
+- Repository visibility: public vs private — [DECISIONS.md](DECISIONS.md) P-1 (open). Do not commit source assets lacking public redistribution rights; Fab source assets stay out of Git.
+- Asset selection: #38 report is complete but the selection is not final. Owner approved the provisional Quaternius set for the #39 spike only, with wildlife/sword/outfit/animation gates (stop and report gaps, no substitution); fallbacks are for evaluation only; no purchase, Fab claim or unverified asset without separate owner approval.
 - Evidence storage route untested — [DECISIONS.md](DECISIONS.md) P-4.
 - Editor build and launch verified on LP-VICTUS (#34, PR #42). Automation, capture routes and packaging are still **unverified** — [MEDIA.md](MEDIA.md).
