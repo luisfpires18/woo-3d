@@ -124,6 +124,7 @@ for y, clip, name in [(-170, "Sword_Idle", "Idle"), (120, "Sword_Heavy_Combo", "
     s.set_actor_scale3d(U.Vector(0.24, 0.24, 0.24))
 
 skel(f"{ROOT}/Wolf/Wolf", f"{ROOT}/Wolf/Wolf_Anim_AnimalArmature_Attack", (0, 420, 0), 0, 0.3, label="Wolf_Attack")
+skel(f"{ROOT}/Husky/Husky", f"{ROOT}/Husky/Husky_Anim_AnimalArmature_Attack", (0, -560, 0), 0, 0.3, label="Husky_Attack")
 
 sun = spawn(U.DirectionalLight, (0, 0, 1000), (0, -40, 35), label="Sun")
 sun.light_component.set_intensity(6.0)
@@ -131,11 +132,11 @@ spawn(U.SkyAtmosphere, (0, 0, 0), label="Atmosphere")
 sky = spawn(U.SkyLight, (0, 0, 500), label="Sky")
 sky.light_component.set_editor_property("real_time_capture", True)
 sky.light_component.set_intensity(1.2)
-cam = spawn(U.CameraActor, tuple(float(v) for v in os.environ.get("WOO006_CAM", "-520,-60,190").split(",")), (0, -6, 0), label="Cam")
+cam = spawn(U.CameraActor, tuple(float(v) for v in os.environ.get("WOO006_CAM", "-640,-60,200").split(",")), (0, -6, 0), label="Cam")
 spawn(U.PlayerStart, (-3000, 0, 120), label="Start")  # keep the default pawn out of frame
 cam.set_editor_property("auto_activate_for_player", U.AutoReceiveInput.PLAYER0)
 
-for folder in ("Wolf", "Warrior"):
+for folder in ("Wolf", "Husky", "Warrior"):
     for p in EAL.list_assets(f"{ROOT}/{folder}", recursive=False, include_folder=False):
         a = EAL.load_asset(p)
         if isinstance(a, U.Material):
@@ -149,7 +150,7 @@ LS.save_current_level()
 
 # Keep only the required creature clips.
 CLIPS = ("_Idle", "_Walk", "_Gallop", "_Run", "_Attack", "_Death")
-for folder in ("Wolf",):
+for folder in ("Wolf", "Husky"):
     for p in EAL.list_assets(f"{ROOT}/{folder}", recursive=False, include_folder=False):
         pkg = p.split(".")[0]
         if "_Anim_" in pkg and not pkg.endswith(CLIPS):

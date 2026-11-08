@@ -73,6 +73,7 @@ HUMAN = 100.0  # humanoid packs export in metres
 task("outfit/Male_Ranger.fbx", "Warrior", ui(SK, scale=HUMAN))
 skel = U.load_asset(f"{ROOT}/Warrior/Male_Ranger_Skeleton")
 task("animals/Wolf.fbx", "Wolf", ui(SK, anims=True))
+task("animals/Husky.fbx", "Husky", ui(SK, anims=True))
 for f in ["ual1/UAL1_Standard.fbx", "ual2/UAL2_Standard.fbx"]:
     task(f, "Warrior/Anim", ui(SK, anims=True, skeleton=skel, mesh=False, scale=HUMAN))
 for p in EAL.list_assets(f"{ROOT}/Warrior/Anim", recursive=True, include_folder=False):
