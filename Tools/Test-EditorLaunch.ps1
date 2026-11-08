@@ -40,9 +40,10 @@ if (-not $p.WaitForExit($ExitTimeoutSec * 1000)) {
     Write-Host "FAIL: editor did not exit within ${ExitTimeoutSec}s after WM_CLOSE; left running for inspection (PID $($p.Id))."
     exit 3
 }
-$errs = Select-String -Path $log -Pattern '(^|\s)(Error|Fatal):' -CaseSensitive
-$warns = (Select-String -Path $log -Pattern 'Warning:' -CaseSensitive).Count
-Write-Host "Editor exit code: $($p.ExitCode); errors: $($errs.Count); warnings: $warns; log: $log"
-$errs | ForEach-Object { Write-Host "  $($_.Line.Trim())" }
+# Verbosity is the field right after the category: "[time][frame]LogFoo: Error: ..."
+$errs = @(Select-String -Path $log -Pattern '^(\[[^\]]*\]){2}\w+: (Error|Fatal):' -CaseSensitive)
+$warns = @(Select-String -Path $log -Pattern '^(\[[^\]]*\]){2}\w+: Warning:' -CaseSensitive)
+Write-Host "Editor exit code: $($p.ExitCode); errors: $($errs.Count); warnings: $($warns.Count); log: $log"
+$errs + $warns | ForEach-Object { Write-Host "  $($_.Line.Trim())" }
 if ($p.ExitCode -ne 0 -or $errs) { exit 1 }
 exit 0
