@@ -2,10 +2,11 @@
 
 ## Capability status
 
-**Nothing in this file is verified for Unreal yet.** Setup (Issue #1) created no `.uproject`, so no capture was attempted. woo-rts capture results (Unity Game view, FFmpeg `ddagrab`, helper scripts) are **not** evidence that any route works for Unreal; revalidate each one here.
+One route is verified, below. woo-rts capture results (Unity Game view, FFmpeg `ddagrab`, helper scripts) are **not** evidence that any route works for Unreal; revalidate each one here.
 
 | Route | Status |
 |---|---|
+| Editor viewport PNG through EngineWire `control_editor.screenshot` (`mode: editor_viewport`, `returnBase64: false`) | **Verified** 8 Nov 2026, LP-VICTUS, UE 5.8.4 editor, Radeon RX 5500M, tested commit `21e834f`, MCPSandbox only (#40). 1523x808 PNG written to `Saved/Screenshots`. Editor viewport only, not realtime. Not evidence for PIE, `-game` or packaged captures. |
 | In-engine screenshot (`HighResShot`, `Shot` console commands; `FScreenshotRequest`) | Unverified |
 | Automation screenshot comparison (Functional Testing / Screenshot Comparison) | Unverified |
 | Video: Movie Render Queue (editor, deterministic, offline) | Unverified |
