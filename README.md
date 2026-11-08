@@ -20,7 +20,28 @@ git lfs install
 git clone https://github.com/luisfpires18/woo-3d.git
 ```
 
-Open the `.uproject` with UE 5.8.4 once one exists.
+After cloning, check that LFS content is real data, not pointer files:
+
+```bash
+git lfs pull
+git lfs ls-files
+git lfs track
+```
+
+Build and launch steps: pending (WOO-002, #35).
+
+## Source-control rules
+
+- `.uasset`, `.umap` and source art (`.fbx`, `.obj`, `.blend`, `.psd`, `.tga`, `.exr`, `.hdr`, `.wav`, `.ogg`) go to Git LFS anywhere in the tree.
+- `.png`, `.jpg` and `.mp4` go to LFS only under `Content/` or `SourceArt/`. Evidence screenshots and video are not committed; they go to release assets ([`.ai/STORAGE.md`](.ai/STORAGE.md)).
+- Ignored: `Binaries/`, `Intermediate/`, `Saved/`, `DerivedDataCache/`, generated solutions (`*.sln`, `*.slnx`), the generated `.vsconfig`, IDE folders, build outputs and local credential files.
+
+Check a path before committing it:
+
+```bash
+git check-attr -a -- Content/Maps/L_Test.umap
+git check-ignore -v -- Saved/Logs/WeaponsOfOrder.log
+```
 
 ## Workflow
 
