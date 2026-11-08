@@ -11,6 +11,7 @@ Plugins/*/Intermediate/
 .vscode/
 .idea/
 *.sln
+*.slnx
 *.suo
 *.opensdf
 *.sdf
@@ -34,3 +35,11 @@ Plugins/*/Intermediate/
 # OS
 Thumbs.db
 .DS_Store
+
+# Local credentials and Claude Code local state
+.env
+.env.*
+*.pem
+*.pfx
+/.claude/worktrees/
+/.claude/settings.local.json
