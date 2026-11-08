@@ -12,7 +12,6 @@ Plugins/*/Intermediate/
 .idea/
 *.sln
 *.slnx
-.vsconfig
 *.suo
 *.opensdf
 *.sdf
