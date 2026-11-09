@@ -2,6 +2,9 @@
 .SYNOPSIS
   Runs a map with -game, takes a HighResShot and records only the game window with FFmpeg.
   Holds A during the recording so the frames show camera motion. WOO-008 (#41).
+  -Keys and -Mouse replace that with a scripted timeline of real OS input (WOO-014, #14):
+    -Keys  'start-end:VK;...'   e.g. '1-3.5:0x57;3.6-3.8:0x20'  (VK codes, seconds from record start)
+    -Mouse 'start-end:dx,dy;...' relative mouse move per 100 ms tick while active
 .NOTES
   ddagrab is cropped to the DPI-aware client rectangle, so only game pixels enter the file.
   Do not use gdigrab title=: at 125% DPI it pulled neighbouring window text into the frame.
@@ -15,9 +18,19 @@ param(
     [string]$Editor = 'D:\Apps\Epic Games\UE_5.8\Engine\Binaries\Win64\UnrealEditor.exe',
     [int]$Seconds = 10,
     [int]$WarmupSeconds = 30,
-    [int]$Fps = 30
+    [int]$Fps = 30,
+    [string]$Keys = '2-5:0x41',
+    [string]$Mouse = ''
 )
 $ErrorActionPreference = 'Stop'
+function Parse-Timeline([string]$Spec) {
+    foreach ($e in ($Spec -split ';' | Where-Object { $_.Trim() })) {
+        $range, $val = $e.Split(':'); $a, $b = $range.Split('-')
+        [pscustomobject]@{ From = [double]$a; To = [double]$b; Val = $val; Down = $false }
+    }
+}
+$keyPlan = @(Parse-Timeline $Keys)
+$mousePlan = @(Parse-Timeline $Mouse)
 Add-Type -Namespace W -Name U -MemberDefinition @'
 [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr h);
 [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
@@ -28,6 +41,8 @@ Add-Type -Namespace W -Name U -MemberDefinition @'
 [StructLayout(LayoutKind.Sequential)] public struct RECT { public int L, T, R, B; }
 [StructLayout(LayoutKind.Sequential)] public struct POINT { public int X, Y; }
 [DllImport("user32.dll")] public static extern void keybd_event(byte k, byte s, uint f, UIntPtr e);
+[DllImport("user32.dll")] public static extern uint MapVirtualKey(uint code, uint mapType);
+[DllImport("user32.dll")] public static extern void mouse_event(uint f, int dx, int dy, uint d, UIntPtr e);
 '@
 [W.U]::SetProcessDPIAware() | Out-Null
 New-Item -ItemType Directory -Force $OutDir | Out-Null
@@ -36,7 +51,7 @@ $started = Get-Date
 
 $game = Start-Process $Editor -PassThru -ArgumentList @(
     "`"$Project`"", $Map, '-game', '-windowed', '-ResX=1280', '-ResY=720', '-WinX=100', '-WinY=100',
-    '-nosplash', '-nosound', '-DisablePlugins=EngineWire', "-abslog=`"$OutDir\game.log`"",
+    '-nosplash', '-nosound', '-DisablePlugins=EngineWire,ModelContextProtocol,AllToolsets,EditorToolset,AnimationAssistantToolset,AutomationTestToolset,ToolsetRegistry', "-abslog=`"$OutDir\game.log`"",
     '-ExecCmds="t.MaxFPS 60,HighResShot 1"')
 try {
     $deadline = (Get-Date).AddSeconds(120)
@@ -64,22 +79,29 @@ try {
         '-y', '-hide_banner', '-f', 'lavfi', '-i', $grab, '-t', $Seconds, '-c:v', 'libx264', '-preset', 'veryfast',
         '-crf', '18', '-pix_fmt', 'yuv420p', "`"$video`"")
     $null = $ff.Handle   # keeps ExitCode readable under PowerShell 5.1
-    $pressed = $false; $lost = $false
+    $lost = $false
     $clock = [Diagnostics.Stopwatch]::StartNew()
     try {
         # Watch focus for the whole recording. Polled every 100 ms, so a shorter loss can pass unseen.
         while (-not $ff.HasExited) {
             if ([W.U]::GetForegroundWindow() -ne $hwnd) { $lost = $true; break }
-            $hold = $clock.Elapsed.TotalSeconds -ge 2 -and $clock.Elapsed.TotalSeconds -lt 5
-            if ($hold -ne $pressed) {
-                $flags = if ($hold) { 0 } else { 2 }                      # 0x41 = A; 2 = key up
-                [W.U]::keybd_event(0x41, 0, [uint32]$flags, [UIntPtr]::Zero)
-                $pressed = $hold
+            $t = $clock.Elapsed.TotalSeconds
+            foreach ($k in $keyPlan) {
+                $hold = $t -ge $k.From -and $t -lt $k.To
+                if ($hold -ne $k.Down) {
+                    $vk = [Convert]::ToInt32($k.Val, 16); [W.U]::keybd_event([byte]$vk, [byte][W.U]::MapVirtualKey($vk, 0), [uint32]$(if ($hold) { 0 } else { 2 }), [UIntPtr]::Zero)   # real scan code: UE needs it to tell L/R Shift
+                    $k.Down = $hold
+                }
+            }
+            foreach ($m in $mousePlan) {
+                if ($t -ge $m.From -and $t -lt $m.To) {
+                    $dx, $dy = $m.Val.Split(','); [W.U]::mouse_event(1, [int]$dx, [int]$dy, 0, [UIntPtr]::Zero)   # 1 = MOVE
+                }
             }
             Start-Sleep -Milliseconds 100
         }
     } finally {
-        if ($pressed) { [W.U]::keybd_event(0x41, 0, 2, [UIntPtr]::Zero) }  # A up, always
+        foreach ($k in $keyPlan) { if ($k.Down) { $vk = [Convert]::ToInt32($k.Val, 16); [W.U]::keybd_event([byte]$vk, [byte][W.U]::MapVirtualKey($vk, 0), 2, [UIntPtr]::Zero) } }  # release, always
     }
     if ($lost) {
         if (-not $ff.HasExited) { Stop-Process -Id $ff.Id; $ff.WaitForExit() }
