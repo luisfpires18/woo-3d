@@ -3,13 +3,13 @@
 Pointers only. Detailed history lives in Issues and PRs; replace lines, do not append a chronology.
 
 - **Roadmap:** https://github.com/luisfpires18/woo-3d/issues/2 (M0–M6; issue-based trackers, not native GitHub Milestones).
-- **Current milestone:** M0 Technical Foundation — in progress; tracker https://github.com/luisfpires18/woo-3d/issues/3.
-- **Active implementation Issue:** none. #39 WOO-006 https://github.com/luisfpires18/woo-3d/issues/39 closed 8 Nov 2026.
-- **Active implementation PR:** none. Last: https://github.com/luisfpires18/woo-3d/pull/49 (UFO-LP setup, no Issue; review ACCEPTED, squash-merged on owner direction as `f945310`, 9 Nov 2026).
+- **Current milestone:** M1 Warrior and Combat — started by owner direction 9 Nov 2026 (M0 tracker #3 not formally closed); tracker https://github.com/luisfpires18/woo-3d/issues/4.
+- **Active implementation Issue:** #14 M1.1 Warrior movement and third-person camera https://github.com/luisfpires18/woo-3d/issues/14 — owner started the phase Issue directly (no separate task Issue).
+- **Active implementation PR:** draft from `woo-014-warrior-movement` (link in #14). Last merged: https://github.com/luisfpires18/woo-3d/pull/49 (UFO-LP setup, squash-merged as `f945310`, 9 Nov 2026).
 - **Last completed tasks:** WOO-002 https://github.com/luisfpires18/woo-3d/issues/35 (PR https://github.com/luisfpires18/woo-3d/pull/45, squash-merged as `4ae9cbb`), WOO-003 https://github.com/luisfpires18/woo-3d/issues/36 (PR https://github.com/luisfpires18/woo-3d/pull/44), and WOO-004 https://github.com/luisfpires18/woo-3d/issues/37 (closed; audit report https://github.com/luisfpires18/woo-3d/issues/37#issuecomment-6720442373). WOO-007 https://github.com/luisfpires18/woo-3d/issues/40 (PR https://github.com/luisfpires18/woo-3d/pull/46) — review ACCEPTED, owner directed merge 8 Nov 2026. WOO-008 https://github.com/luisfpires18/woo-3d/issues/41 (PR https://github.com/luisfpires18/woo-3d/pull/47, squash-merged as `caee4896`) — review ACCEPTED, owner directed merge 8 Nov 2026.
 - **Research:** #38 WOO-005 owner-accepted and closed 8 Nov 2026. Provisional asset selection approved for the #39 spike under gates, 8 Nov 2026 (https://github.com/luisfpires18/woo-3d/issues/39#issuecomment-6726799348).
-- **Next proposed task:** none queued; M1 tracker https://github.com/luisfpires18/woo-3d/issues/4 is next once the owner starts an Issue.
-- **Development machine:** UFO-LP is the primary development machine (`LP-UFOROG`, checkout `F:/Workspace/Projects/Unity/woo-3d`). Setup audit 9 Nov 2026: Git LFS content complete; editor build (clean + incremental), launch check, `-game` HighResShot and FFmpeg `ddagrab` video of `L_ImportSample` pass there (capture must be launched from an interactive terminal, not a background shell). Native MCP enabled in WeaponsOfOrder (read-only calls verified over JSON-RPC); evidence on draft release `evidence-pr49-ufo-lp-setup-20261109`. Packaging not run. LP-VICTUS results stay LP-VICTUS results.
+- **Next proposed task:** #15 M1.2 two-handed sword and animation integration, once the owner starts it.
+- **Development machine:** UFO-LP is the primary development machine (`LP-UFOROG`, checkout `F:/Workspace/Projects/Unreal/woo3d`). Setup audit 9 Nov 2026: Git LFS content complete; editor build (clean + incremental), launch check, `-game` HighResShot and FFmpeg `ddagrab` video of `L_ImportSample` pass there (capture must be launched from an interactive terminal, not a background shell). Native MCP enabled in WeaponsOfOrder (read-only calls verified over JSON-RPC); evidence on draft release `evidence-pr49-ufo-lp-setup-20261109`. Packaging not run. LP-VICTUS results stay LP-VICTUS results.
 
 ## Blockers / owner decisions open
 
