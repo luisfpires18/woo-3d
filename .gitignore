@@ -43,3 +43,7 @@ Thumbs.db
 *.pfx
 /.claude/worktrees/
 /.claude/settings.local.json
+
+# Licence-pending third-party assets: local evaluation only, never commit (see THIRD_PARTY_ASSETS.md)
+/Content/LocalOnly/
+/Source_LocalOnly/
