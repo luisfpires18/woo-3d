@@ -12,7 +12,7 @@ How to build `WeaponsOfOrderEditor` and smoke-test the editor from a fresh check
 | Target / config | `WeaponsOfOrderEditor Win64 Development` |
 | DDC | project-local `DerivedDataCache/` (see `Config/DefaultEngine.ini`) |
 
-UFO-LP is not verified yet. Re-run both scripts there after migration.
+UFO-LP (`LP-UFOROG`), 9 Nov 2026, commit `f5b8c42`: VS Community 2026 18.11.0 with the components in [`../.vsconfig`](../.vsconfig), MSVC 14.50 (compiler 14.50.35739), Windows SDK 10.0.22621.0. `Build-Editor.ps1 -Clean` exit 0 (88 s), incremental exit 0 (2.7 s), `Test-EditorLaunch.ps1` exit 0 (init 51 s, 0 errors). Pass `-EngineDir "F:/Apps/Epic Games/UE_5.8"`: the engine is not registered there. The Windows SDK and parts of VS install to C: regardless of chosen paths; the first attempt failed with `0x80070070` (disk full) at 6.7 GB free.
 
 ## Commands
 

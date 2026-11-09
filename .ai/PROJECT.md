@@ -12,7 +12,7 @@
 |---|---|---|
 | Engine | Unreal Engine 5.8.4 (`Build.version` 5.8.4, CL 58902052, `++UE5+Release-5.8`) | Verified installed on LP-VICTUS at `D:/Apps/Epic Games/UE_5.8`, 7 Nov 2026 |
 | Current / initial development machine | LP-VICTUS — Windows 11 Pro, AMD Radeon RX 5500M 4 GB + integrated Radeon | Confirmed ([DECISIONS.md](DECISIONS.md) C-10); observed 7 Nov 2026 |
-| Later development and performance-benchmark machine | UFO-LP — Windows, RTX 2070 8 GB | Confirmed role; engine and toolchain **not verified** there |
+| Later development and performance-benchmark machine | UFO-LP (hostname `LP-UFOROG`) — Windows 11 Pro 10.0.26200, Ryzen 7 5800X, 32 GB RAM, RTX 2070 8 GB (driver 610.88) | Becoming the primary development machine (owner, 9 Nov 2026). UE 5.8.4 CL 58902052 at `F:/Apps/Epic Games/UE_5.8` (not registered in HKCU/HKLM; pass `-EngineDir`). Editor build and launch verified 9 Nov 2026 (VS 2026 18.11.0, MSVC 14.50.35739, SDK 10.0.22621.0). |
 | Python | Engine-bundled `Engine/Binaries/ThirdParty/Python3/Win64/python.exe`; `PythonScriptPlugin` present under `Plugins/Experimental` | Files present; editor scripting **not run** |
 | Automation tool | `Engine/Build/BatchFiles/RunUAT.bat` | Present; **not run** |
 
