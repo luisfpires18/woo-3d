@@ -78,3 +78,24 @@ Run a separate process against the saved map. `-DisablePlugins=EngineWire` keeps
 - Keep **Listen Host** at `127.0.0.1` and **Allow Non Loopback** off.
 - The token is stored in plain text in `~/.claude.json`, which is outside the repository. `headersHelper` would avoid that, but Claude Code does not run it until the workspace trust dialog has been accepted interactively.
 - The plugin logs a warning that the all-or-nothing capability token is deprecated in favour of scoped tokens. Scoped tokens are not configured.
+
+## Epic native Unreal MCP (UFO-LP evaluation, 9 Nov 2026)
+
+Evaluated on UFO-LP (`LP-UFOROG`), UE 5.8.4, first in a disposable project `F:/Workspace/unrealengine/MCPNativeSandbox` (`AllToolsets`, 55 toolsets), then enabled in `WeaponsOfOrder.uproject` on owner direction (9 Nov 2026) with only `ModelContextProtocol` (Editor targets only), `EditorToolset`, `AutomationTestToolset` and `AnimationAssistantToolset`: 28 toolsets. Loopback bind is in `Config/DefaultEngine.ini`; auto-start on port 8000 in `Config/DefaultEditorPerProjectUserSettings.ini`. In WeaponsOfOrder only read-only calls were run (`get_current_level` → `/Game/ThirdParty/WOO006/L_ImportSample`, `find_actors`); the spawn/delete test ran in the sandbox only. EngineWire is not installed on UFO-LP, so only one Unreal MCP was connected.
+
+| Item | Value |
+|---|---|
+| Plugins | `ModelContextProtocol` (Experimental, NoRedist) and `AllToolsets` (pulls `ToolsetRegistry`, `PythonScriptPlugin`, `EditorScriptingUtilities`, `FileSandbox`) |
+| Server | `http://127.0.0.1:8000/mcp`. `netstat` showed `127.0.0.1:8000 LISTENING` only, with `[HTTPServer.Listeners] DefaultBindAddress=127.0.0.1` in `Config/DefaultEngine.ini`. No authentication token. |
+| Start | `bAutoStartServer=True` under `[/Script/ModelContextProtocolEngine.ModelContextProtocolSettings]` in `Config/DefaultEditorPerProjectUserSettings.ini`, or console `ModelContextProtocol.StartServer` |
+| Client config | Console `ModelContextProtocol.GenerateClientConfig ClaudeCode` wrote `.mcp.json` with server `unreal-mcp` |
+| Claude Code | `claude mcp add --transport http -s local unreal-mcp http://127.0.0.1:8000/mcp`; `claude mcp get unreal-mcp` reported `Connected` |
+| Discovery | Tool search on: `tools/list` returns `list_toolsets`, `describe_toolset`, `call_tool`. `list_toolsets` returned 55 toolsets. |
+| Epic Claude plugin | `unreal-engine-skills-for-claude-code@claude-plugins-official` 3.1.2, user scope. Skills `unreal-mcp`, `create-toolset`, `unreal-skill`. Its SessionStart hook ran with exit 0 in this repository. |
+
+Calls verified over MCP JSON-RPC (`call_tool`), 9 Nov 2026: `SceneTools.get_current_level`, `SceneTools.find_actors`, `SceneTools.add_to_scene_from_asset` (`/Engine/BasicShapes/Cube.Cube`), `EditorAppToolset.FocusOnActors`, `EditorAppToolset.CaptureViewport` (returns a base64 PNG, not a file), `SceneTools.remove_from_scene`, all in the unsaved `/Temp/Untitled_1` level. Tool calls from a Claude Code session were **not** verified: the session started before registration and a headless `claude -p` failed to authenticate.
+
+Notes:
+- `find_actors` and `add_to_scene_from_asset` reject omitted fields; pass `name`, `tag`, `collision_channels` and `xform` explicitly. `CaptureViewport` needs `captureTransform`.
+- The editor logs a warning that data sent through the plugin is Licensed Technology under the UE EULA §6(e), and the owner is responsible for the LLM provider not training on it.
+- No optional `unreal-mcp-proxy` ships in this engine install.
