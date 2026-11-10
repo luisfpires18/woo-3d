@@ -60,6 +60,8 @@ Only these:
 None.
 
 ## Verification levels
+Claude may use C++, Unreal Python/editor scripting, commandlets and other supported automation. Verify each technique works in this UE 5.8.4 installation before relying on it; do not claim a technique works from documentation alone.
+
 Report each level separately. Passing one never proves another.
 
 | Level | Example | Proves |
