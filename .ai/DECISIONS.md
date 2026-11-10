@@ -19,6 +19,7 @@ Three lists. Do not move an item to **Confirmed** without an owner decision and 
 | C-11 | Roadmap and plan structure: Roadmap Issue #2, milestone tracker Issues #3–#9, phase Issues #10–#20 and #22–#33 (#21 is the setup PR), M0 task Issues #34–#41. Issue-based Markdown trackers; no native GitHub Milestones or sub-issues. | [Roadmap #2](https://github.com/luisfpires18/woo-3d/issues/2); [review on PR #21](https://github.com/luisfpires18/woo-3d/pull/21#issuecomment-6714203616) |
 | C-12 | Evidence storage: draft GitHub release assets per [STORAGE.md](STORAGE.md) (was P-4). Owner approved 8 Nov 2026. Verified in #41: upload, authenticated download with matching hashes, and 404 for anonymous access. ChatGPT reviewer retrieval is not verified. | [Owner decision on #41](https://github.com/luisfpires18/woo-3d/issues/41); [PR #47](https://github.com/luisfpires18/woo-3d/pull/47) |
 | C-13 | Repository stays **public** (was P-1). Commit only third-party assets whose terms permit public redistribution. Owner decided 8 Nov 2026. | [Owner decisions on #39](https://github.com/luisfpires18/woo-3d/issues/39#issuecomment-6726799348) |
+| C-14 | Workflow moves to the shared luisfpires18/ai-workflow (10 Nov 2026), superseding C-2: owner writes Issues, Claude implements, Codex reviews read-only, Claude merges on Codex ACCEPTED (hard cap 15 reviews); deployments and new milestones still need the owner. | Owner, 10 Nov 2026; adoption PR |
 
 ## Completed setup actions
 

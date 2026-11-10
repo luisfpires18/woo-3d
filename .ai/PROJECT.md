@@ -41,14 +41,44 @@ Reference target: **1080p, 60 FPS in a packaged Windows build** on UFO-LP (RTX 2
 - Evidence media is **not** committed to LFS by default; see [STORAGE.md](STORAGE.md).
 - Bulk asset imports need their own approved Issue.
 
+## Roadmap and trackers
+Roadmap [#2](https://github.com/luisfpires18/woo-3d/issues/2); milestone trackers M0–M6 are Issues #3–#9. They are ordinary Issues with Markdown checklists, not native GitHub Milestones or sub-issues.
+
+## Shared workflow modules
+`media`, `lorevolve-canon` from luisfpires18/ai-workflow. Repository specifics: [MEDIA.md](MEDIA.md) (Unreal evidence contract), [STORAGE.md](STORAGE.md) (draft-release storage, manifest, retention).
+
+## Skills
+Only these:
+- Core, always on: `ponytail` (mandatory), `caveman`, `context-mode`, `humanizer`, `code-audit`, `tech-debt-audit`.
+- Unreal: `unreal@awesome-gamedev-agent-skills`, the official Unreal Engine Skills plugin and its editor MCP.
+- `genres`, `disciplines`, `workflows`, `router`, GameDevelopmentAudit, `game-review`: design, feel and balance.
+- `blender-image-to-3d`, Meshy, ElevenLabs: assets and audio, when a task asks for them (licence rules above apply).
+
+`.claude/settings.json` (unreal preset) turns off the Unity, Godot, RPG Maker, web and frontend plugins here.
+
+## Review overrides
+None.
+
+## Verification levels
+Report each level separately. Passing one never proves another.
+
+| Level | Example | Proves |
+|---|---|---|
+| Compilation | UBT build of the editor target | Code compiles and links |
+| Automated tests | `UnrealEditor-Cmd ... -ExecCmds="Automation RunTests ..."` | Tested logic only |
+| Runtime check | PIE or `-game` run with logged assertions | Behaviour in a running instance |
+| Visual inspection | Screenshots/video per [MEDIA.md](MEDIA.md) | What was seen in the captured scenario |
+| Packaged performance | Packaged Windows build, measured FPS/frametime | Performance on the stated hardware only |
+
+Record exact commands, exit codes, test counts, engine version, machine and tested commit. Anything not run is reported as **not run**, with the reason.
+
 ## Documentation index
 
 | File | Purpose |
 |---|---|
 | [`../CLAUDE.md`](../CLAUDE.md) | Claude Code entry point |
 | [`../README.md`](../README.md) | Project summary and local startup |
-| [WORKFLOW.md](WORKFLOW.md) | Lifecycle, authorization, review, handoff |
-| [SESSION_START.md](SESSION_START.md) | New-session procedure (ChatGPT and Claude) |
+| luisfpires18/ai-workflow | Shared lifecycle, authorization, Codex review, handoff (`WORKFLOW.md`, `REVIEW.md`, `OWNER.md`) |
 | [STATE.md](STATE.md) | Current pointers and blockers only |
 | [DECISIONS.md](DECISIONS.md) | Confirmed / proposed / deferred decisions |
 | [MEDIA.md](MEDIA.md) | Unreal screenshot/video evidence contract |
