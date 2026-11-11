@@ -54,8 +54,7 @@ Development follows an issue-driven workflow: planning, implementation on a feat
 | Document | Purpose |
 |---|---|
 | [CLAUDE.md](CLAUDE.md) | Claude Code entry point |
-| [.ai/WORKFLOW.md](.ai/WORKFLOW.md) | Lifecycle, authorization and review |
-| [.ai/SESSION_START.md](.ai/SESSION_START.md) | New-session checklist |
+| [luisfpires18/ai-workflow](https://github.com/luisfpires18/ai-workflow) | Shared lifecycle, authorization and Codex review |
 | [.ai/STATE.md](.ai/STATE.md) | Current task pointers |
 | [.ai/DECISIONS.md](.ai/DECISIONS.md) | Confirmed, proposed and deferred decisions |
 | [.ai/MEDIA.md](.ai/MEDIA.md) | Screenshot and video evidence |
