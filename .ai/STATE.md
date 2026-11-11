@@ -2,6 +2,8 @@
 
 Pointers only. Detailed history lives in Issues and PRs; replace lines, do not append a chronology.
 
+- **Workflow:** shared luisfpires18/ai-workflow since 10 Nov 2026 (Claude implements, Codex reviews, Claude merges on ACCEPTED).
+
 - **Roadmap:** https://github.com/luisfpires18/woo-3d/issues/2 (M0–M6; issue-based trackers, not native GitHub Milestones).
 - **Current milestone:** M1 Warrior and Combat — started by owner direction 9 Nov 2026 (M0 tracker #3 not formally closed); tracker https://github.com/luisfpires18/woo-3d/issues/4.
 - **Active implementation Issue:** none. Last: #14 M1.1 https://github.com/luisfpires18/woo-3d/issues/14 closed 9 Nov 2026.
