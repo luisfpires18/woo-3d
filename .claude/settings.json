@@ -26,6 +26,9 @@
     "web-engines@awesome-gamedev-agent-skills": false,
     "unity-perf@anthropic-plugin-directory": false,
     "unity@anthropic-plugin-directory": false,
-    "unreal-engine-skills@anthropic-plugin-directory": true
+    "unreal-engine-skills@anthropic-plugin-directory": true,
+    "taste-skill@taste-skill": false,
+    "impeccable@impeccable": false,
+    "unreal-engine-skills-for-claude-code@claude-plugins-official": true
   }
 }
