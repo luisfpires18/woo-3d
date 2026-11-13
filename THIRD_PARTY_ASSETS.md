@@ -1,5 +1,17 @@
 # Third-party assets
 
+## Credits
+
+Attribution is not required by any licence below; credited here as a courtesy and for traceability.
+
+| Creator | What we use | Licence | Link |
+|---|---|---|---|
+| Quaternius | Warrior/Ranger outfit, Universal Animation Library 1 & 2 clips, Claymore, Wolf, Husky, nature props | CC0 1.0 | https://quaternius.com |
+| Poly Haven | `brown_mud_leaves_01` ground texture | CC0 1.0 | https://polyhaven.com |
+| Epic Games | Engine basic shapes (`/Engine/BasicShapes`) in test maps | Unreal Engine EULA (ships with the engine) | https://www.unrealengine.com/eula |
+
+## In Git (CC0)
+
 Everything below is CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/). Source files are not in Git; only the imported Unreal assets under `Content/ThirdParty/WOO006/` are.
 
 Acquired 8 Nov 2026. Quaternius files were downloaded by the owner. Poly Haven files were fetched directly. Licence wording: each Quaternius zip contains a `License*.txt` stating CC0 1.0; Poly Haven: https://polyhaven.com/license . The Ranger outfit, and any medieval piece, is a blockout placeholder and does not set art direction (owner decision on #39).
@@ -37,3 +49,11 @@ Acquired 8 Nov 2026. Quaternius files were downloaded by the owner. Poly Haven f
 | Poly Haven | https://polyhaven.com/a/brown_mud_leaves_01 | n/a | `Textures/jpg/1k/brown_mud_leaves_01/brown_mud_leaves_01_diff_1k.jpg` | `c598c555f13cd5328409fd5e2a45496a26e319e52299e3959042f1449c2f1b06` |
 | Poly Haven | https://polyhaven.com/a/brown_mud_leaves_01 | n/a | `Textures/jpg/1k/brown_mud_leaves_01/brown_mud_leaves_01_nor_gl_1k.jpg` | `8dd5166ddcc293cefd331d491ce6b9162bc9202ddd999ac1e4141697560d38e0` |
 | Quaternius | https://quaternius.com/packs/ultimateanimatedanimals.html | `1c9211075189d4764454ea47997a4a96e8d7ba9fce4d48953af61bf6fa2af3cc` | `FBX/Husky.fbx` | `2fd68780ebd69e138303fd38a430f6b8a87f6aafd29770339c95ce15f52d7321` |
+
+## Evaluated, not in Git
+
+Assets here may be used only for local evaluation. They live in git-ignored folders (`/Content/LocalOnly/`, `/Source_LocalOnly/`, see `.gitignore`) and must not be committed until the licence row says so.
+
+| Creator | Asset | Licence (as stated by the creator) | Public-repo redistribution | Status |
+|---|---|---|---|---|
+| Kevin Iglesias | Human Melee Animations 2.0 FREE (94 clips; two-handed: `Attack2H01`, `CombatIdle2H01`, `WeaponHold2H01`) — https://www.keviniglesias.com/documentation/Human%20Melee%20Animations%20FREE.pdf | Standard Unity Asset Store EULA; royalty-free, commercial use allowed, resale not allowed, attribution not required | **Not cleared.** Ask support@keviniglesias.com before committing any imported or retargeted file | #15 partial candidate. Local-only retarget test 9 Nov 2026: compatible after a units fix; hands too high, only one 2H attack. Owner decision 9 Nov 2026: keep local only; redistribution question to the creator pending. If denied or unclear, stays out of Git (another set, or Option A deferral) |

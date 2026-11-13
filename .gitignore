@@ -44,3 +44,7 @@ Thumbs.db
 /.claude/worktrees/
 /.claude/settings.local.json
 .ai/tmp/
+
+# Licence-pending third-party assets: local evaluation only, never commit (see THIRD_PARTY_ASSETS.md)
+/Content/LocalOnly/
+/Source_LocalOnly/
