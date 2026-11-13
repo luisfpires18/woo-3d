@@ -53,6 +53,7 @@ Only these:
 - Unreal: `unreal@awesome-gamedev-agent-skills`, the official Unreal Engine Skills plugin and its editor MCP.
 - `genres`, `disciplines`, `workflows`, `router`, GameDevelopmentAudit, `game-review`: design, feel and balance.
 - `blender-image-to-3d`, Meshy, ElevenLabs: assets and audio, when a task asks for them (licence rules above apply).
+- `blender` MCP and `scripts/blender.sh`: 3D work (`modules/blender.md` in luisfpires18/ai-workflow); the MCP when its server is running, else `blender.sh`.
 
 `.claude/settings.json` (unreal preset) turns off the Unity, Godot, RPG Maker, web and frontend plugins here.
 
