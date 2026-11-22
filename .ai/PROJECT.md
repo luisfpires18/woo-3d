@@ -42,7 +42,8 @@ Reference target: **1080p, 60 FPS in a packaged Windows build** on UFO-LP (RTX 2
 - Bulk asset imports need their own approved Issue.
 
 ## Roadmap and trackers
-Roadmap [#2](https://github.com/luisfpires18/woo-3d/issues/2); milestone trackers M0–M6 are Issues #3–#9. They are ordinary Issues with Markdown checklists, not native GitHub Milestones or sub-issues.
+Roadmap: GitHub Milestones (https://github.com/luisfpires18/woo-3d/milestones); task Issues belong to them. Overview: [#2](https://github.com/luisfpires18/woo-3d/issues/2).
+Task prefix: `WOO` (task Issue titles: `[WOO-NNN] <outcome>`, numbered in order)
 
 ## Shared workflow modules
 `media`, `lorevolve-canon` from luisfpires18/ai-workflow. Repository specifics: [MEDIA.md](MEDIA.md) (Unreal evidence contract), [STORAGE.md](STORAGE.md) (draft-release storage, manifest, retention).

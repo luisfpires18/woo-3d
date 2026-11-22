@@ -4,8 +4,8 @@ Pointers only. Detailed history lives in Issues and PRs; replace lines, do not a
 
 - **Workflow:** shared luisfpires18/ai-workflow since 10 Nov 2026 (Claude implements, Codex reviews, Claude merges on ACCEPTED).
 
-- **Roadmap:** https://github.com/luisfpires18/woo-3d/issues/2 (M0–M6; issue-based trackers, not native GitHub Milestones).
-- **Current milestone:** M1 Warrior and Combat — started by owner direction 9 Nov 2026 (M0 tracker #3 not formally closed); tracker https://github.com/luisfpires18/woo-3d/issues/4.
+- **Roadmap:** GitHub Milestones M0–M6 (https://github.com/luisfpires18/woo-3d/milestones); overview https://github.com/luisfpires18/woo-3d/issues/2. The old tracker Issues #3–#9 are closed and link to their Milestones.
+- **Current milestone:** M1 Warrior and Combat — started by owner direction 9 Nov 2026 (M0 still has open tasks); Milestone https://github.com/luisfpires18/woo-3d/milestone/2.
 - **Active implementation Issue:** none. Last: #14 M1.1 https://github.com/luisfpires18/woo-3d/issues/14 closed 9 Nov 2026.
 - **Active implementation PR:** none. Last: https://github.com/luisfpires18/woo-3d/pull/50 (WOO-014, review ACCEPTED, squash-merged on owner direction as `fa6b6c8`, 9 Nov 2026).
 - **Last completed tasks:** WOO-002 https://github.com/luisfpires18/woo-3d/issues/35 (PR https://github.com/luisfpires18/woo-3d/pull/45, squash-merged as `4ae9cbb`), WOO-003 https://github.com/luisfpires18/woo-3d/issues/36 (PR https://github.com/luisfpires18/woo-3d/pull/44), and WOO-004 https://github.com/luisfpires18/woo-3d/issues/37 (closed; audit report https://github.com/luisfpires18/woo-3d/issues/37#issuecomment-6720442373). WOO-007 https://github.com/luisfpires18/woo-3d/issues/40 (PR https://github.com/luisfpires18/woo-3d/pull/46) — review ACCEPTED, owner directed merge 8 Nov 2026. WOO-008 https://github.com/luisfpires18/woo-3d/issues/41 (PR https://github.com/luisfpires18/woo-3d/pull/47, squash-merged as `caee4896`) — review ACCEPTED, owner directed merge 8 Nov 2026.
