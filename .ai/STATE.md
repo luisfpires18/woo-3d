@@ -1,5 +1,7 @@
 # Current state
 
+- **Milestones moved (22 Nov 2026):** milestones now live on the GitHub Milestones page (https://github.com/luisfpires18/woo-3d/milestones); Issues are tasks only. The tracker Issue numbers below are closed, and each links to its Milestone. Start a run with "Run milestone M<n>."
+
 Pointers only. Detailed history lives in Issues and PRs; replace lines, do not append a chronology.
 
 - **Workflow:** shared luisfpires18/ai-workflow since 10 Nov 2026 (Claude implements, Codex reviews, Claude merges on ACCEPTED).
