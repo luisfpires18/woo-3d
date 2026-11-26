@@ -42,7 +42,8 @@ Reference target: **1080p, 60 FPS in a packaged Windows build** on UFO-LP (RTX 2
 - Bulk asset imports need their own approved Issue.
 
 ## Roadmap and trackers
-Roadmap: GitHub Milestones (https://github.com/luisfpires18/woo-3d/milestones); task Issues belong to them. Overview: [#2](https://github.com/luisfpires18/woo-3d/issues/2).
+Roadmap: GitHub Milestones (tasks are Issues in them)
+Milestones: https://github.com/luisfpires18/woo-3d/milestones. Overview: [#2](https://github.com/luisfpires18/woo-3d/issues/2).
 Task prefix: `WOO` (task Issue titles: `[WOO-NNN] <outcome>`, numbered in order)
 
 ## Shared workflow modules
@@ -57,6 +58,12 @@ Only these:
 - `blender` MCP and `scripts/blender.sh`: 3D work (`modules/blender.md` in luisfpires18/ai-workflow); the MCP when its server is running, else `blender.sh`.
 
 `.claude/settings.json` (unreal preset) turns off the Unity, Godot, RPG Maker, web and frontend plugins here.
+
+## Commands
+- Pre-push gate: `.ai/checks.sh` (run by `scripts/gate.py`)
+
+## Tool preconditions
+`python` (or `py`) and Windows PowerShell on PATH for `.ai/checks.sh`. It does not need Unreal.
 
 ## Review overrides
 None.
